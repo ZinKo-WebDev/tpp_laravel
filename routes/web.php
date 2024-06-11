@@ -19,4 +19,3 @@ return view("index");
 Route::get("category",[CategoryController::class,'index']);
 Route::get("result",[CategoryController::class,'result']);
 Route::get("product",[ProductController::class,'index']);
-
