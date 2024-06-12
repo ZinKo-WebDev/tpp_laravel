@@ -22,4 +22,16 @@ class CategoryController extends Controller
     {
         return view('category.result');
     }
+    public function create()
+    {
+        return view('category.create');
+    }
+    public function store(Request $request)
+    {
+        Category::create([
+           "name"=> $request->name,
+        ]);
+//        dd($request->all());
+     return redirect()->route('categoryIndex');
+    }
 }

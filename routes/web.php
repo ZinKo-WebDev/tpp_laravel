@@ -16,6 +16,8 @@ return view("index");
 // return view("category.index");
 // });
 
-Route::get("category",[CategoryController::class,'index']);
-Route::get("result",[CategoryController::class,'result']);
-Route::get("product",[ProductController::class,'index']);
+Route::get("category",[CategoryController::class,'index'])->name('categoryIndex');
+Route::get("result",[CategoryController::class,'result'])->name('categoryResult');
+Route::get("product",[ProductController::class,'index'])->name('productIndex');
+Route::get("category/create",[CategoryController::class,'create'])->name('categoryCreate');
+Route::post("category/store",[CategoryController::class,'store'])->name('categoryStore');

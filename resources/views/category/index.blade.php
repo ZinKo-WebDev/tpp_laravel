@@ -20,6 +20,8 @@
 </head>
 <body class="px-3">
     <h2 class="text-2xl text-center my-3">Category Page</h2>
+
+    <a href="{{route('categoryCreate')}}">Create</a>
     <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 " >
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
@@ -28,6 +30,8 @@
                 </th>
                 <th scope="col" class="px-6 py-3">
                     Category name
+                </th> <th scope="col" class="px-6 py-3">
+                    Action
                 </th>
 
             </tr>
@@ -42,6 +46,11 @@
                   </td>
                 <td class="px-6 py-4">
                     {{$category->name}}
+                  </td>
+       <td class="px-6 py-4">
+
+           <a href="">Edit</a>
+           <a href="">Delete</a>
                   </td>
    </tr>
     @endforeach
