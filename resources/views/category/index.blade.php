@@ -4,27 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+          theme: {
+            extend: {
+              colors: {
+                clifford: '#da373d',
+              }
+            }
+          }
+        }
+      </script>
     <title>Document</title>
 </head>
-<body>
-    <h2>Category Page</h2>
-    <table>
-        <thead>
+<body class="px-3">
+    <h2 class="text-2xl text-center my-3">Category Page</h2>
+    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 " >
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
-                <th>FirstName</th>
-                <th>LastName</th>
-                <th>Age</th>
+                <th scope="col" class="px-6 py-3">
+                   Category ID
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Category name
+                </th>
+
             </tr>
         </thead>
 <tbody>
-    @foreach ($data as $person)
+    {{-- @dd($categories) --}}
+    @foreach ($categories as $category)
 
-    <tr>
-        <th>{{$person[0]}}</th>
-        <th>{{$person[1]}}</th>
-        <th>{{$person[2]}}</th>
-
-    </tr>
+   <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                <td class="px-6 py-4">
+                    {{$category->id}}
+                  </td>
+                <td class="px-6 py-4">
+                    {{$category->name}}
+                  </td>
+   </tr>
     @endforeach
 
 </tbody>
