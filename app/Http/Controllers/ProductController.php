@@ -9,13 +9,10 @@ class ProductController extends Controller
 {
     public function index()
     {
-        // $products=[
-        //     ["Apple MacBook Pro 17","Silver","Laptop",2999],
-        //     ["Magic Mouse 2","Black","Accessories",99]
-        // ];
+
         $products = Product::all();
-        // dd($data);
-        return view('product.index',compact('products'));
+
+        return view('product.index', compact('products'));
     }
 
     public function create()
@@ -25,11 +22,11 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         Product::create([
-            'name'=> $request->name,
-            'color'=> $request->color,
-            'category'=> $request->category,
-            'price'=> $request->price,
-            'image'=> $request->image,
+            'name' => $request->name,
+            'color' => $request->color,
+            'category' => $request->category,
+            'price' => $request->price,
+            'image' => $request->image,
 
         ]);
         return redirect()->route('productIndex');
@@ -37,7 +34,7 @@ class ProductController extends Controller
     public function edit($id)
     {
 
-        $product = Product:: where('id', $id)->first();
+        $product = Product::where('id', $id)->first();
         return view('product.edit', compact('product'));
     }
 
@@ -56,5 +53,10 @@ class ProductController extends Controller
         return redirect()->route('productIndex');
     }
 
-}
+    public function delete(Product $id)
+    {
 
+        $id->delete();
+        return redirect()->route('productIndex');
+    }
+}
