@@ -9,12 +9,7 @@ class CategoryController extends Controller
 {
     public function index()
     {
-        // $data=[
-        //     ["Stark","Brandon",18],
-        //     ["Grayjoy","Thiron",21],
-        //     ["Gilbart","Elena",24],
-        // ];
-        // dd($data);
+
         $categories = Category::all();
         return view('category.index',compact("categories"));
     }
@@ -31,7 +26,33 @@ class CategoryController extends Controller
         Category::create([
            "name"=> $request->name,
         ]);
-//        dd($request->all());
      return redirect()->route('categoryIndex');
     }
+
+public function edit($id)
+{
+
+    $data = Category:: where('id', $id)->first();
+    return view('category.edit', compact('data'));
 }
+
+
+public function update(Request $request, $id)
+{
+    $data = Category::where('id', $id)->first();
+    $data->update([
+        'name' => $request->input('name'),
+    ]);
+
+    return redirect()->route('categoryIndex');
+}
+
+public function delete($id)
+{
+    $data = Category::where('id', $id)->first();
+    $data->delete();
+    return redirect()->route('categoryIndex');
+}
+
+}
+

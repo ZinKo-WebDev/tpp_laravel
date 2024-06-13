@@ -49,8 +49,8 @@
                   </td>
        <td class="px-6 py-4">
 
-           <a href="">Edit</a>
-           <a href="">Delete</a>
+           <a href="{{route('categoryEdit',$category->id)}}">Edit</a>
+{{--           <a href="{{route('')}}">Delete</a>--}}
                   </td>
    </tr>
     @endforeach

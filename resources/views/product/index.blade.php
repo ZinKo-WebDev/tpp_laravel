@@ -23,6 +23,7 @@
 
 
 <div class="relative overflow-x-auto">
+    <a href="{{route('productCreate')}}">Create</a>
     <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
@@ -40,28 +41,39 @@
                 </th>
                 <th scope="col" class="px-6 py-3">
                     Price
+                </th><th scope="col" class="px-6 py-3">
+                    Image
+                </th>  </th><th scope="col" class="px-6 py-3">
+                    Action
                 </th>
             </tr>
         </thead>
         <tbody>
             {{-- @dd($products); --}}
-            @foreach ($products as $product)
+            @foreach ($products as $p)
 
             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                 <td class="px-6 py-4">
-                    {{$product->id}}
+                    {{$p->id}}
                   </td>
                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                   {{$product->name}}
+                   {{$p->name}}
                 </th>
                 <td class="px-6 py-4">
-                  {{$product->color}}
+                  {{$p->color}}
                 </td>
                 <td class="px-6 py-4">
-                  {{$product->category}}
+                  {{$p->category}}
                 </td>
                 <td class="px-6 py-4">
-                  ${{$product->price}}
+                  ${{$p->price}}
+                </td>
+                <td class="px-6 py-4">
+                  ${{$p->image}}
+                </td>
+                <td>
+                    <a href="{{route('productEdit',$p->id)}}">Edit</a>
+                    <a href="">Delete</a>
                 </td>
             </tr>
             @endforeach
