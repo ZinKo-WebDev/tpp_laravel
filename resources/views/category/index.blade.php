@@ -50,7 +50,12 @@
        <td class="px-6 py-4">
 
            <a href="{{route('categoryEdit',$category->id)}}">Edit</a>
-{{--           <a href="{{route('')}}">Delete</a>--}}
+           <a href="{{route('categoryDelete',$category->id)}}">
+               <form action="{{route('categoryDelete',$category->id)}}" method="POST">
+                   @csrf
+                   <button type="submit" >Delete</button>
+               </form>
+           </a>
                   </td>
    </tr>
     @endforeach

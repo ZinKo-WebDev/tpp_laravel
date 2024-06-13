@@ -47,10 +47,10 @@ public function update(Request $request, $id)
     return redirect()->route('categoryIndex');
 }
 
-public function delete($id)
+public function delete(Category $id)
 {
-    $data = Category::where('id', $id)->first();
-    $data->delete();
+
+    $id->delete();
     return redirect()->route('categoryIndex');
 }
 
