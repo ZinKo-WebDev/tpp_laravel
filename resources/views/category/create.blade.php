@@ -1,19 +1,17 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
 <body>
-<h2>Create New Category</h2>
-<form action="store" method="POST">
+    <h1>Create Category</h1>
+    <form action="{{route('categoryStore')}}" method="post">
     @csrf
-    <label for="">Category Name</label>
+     <label for="">Name</label>
     <input type="text" name="name">
-    <input type="submit">
-</form>
+    <button type="submit">Create</button>
+    </form>
 </body>
 </html>
