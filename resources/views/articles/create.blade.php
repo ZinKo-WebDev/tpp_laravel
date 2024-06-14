@@ -18,7 +18,7 @@
 </head>
 <body>
     <h1 class="text-2xl text-center my-3">Create Article</h1>
-<form action="{{route('Article.store')}}" method="POST" class="max-w-sm mx-auto bg-slate-500 p-5 rounded rounded-md">
+<form action="{{route('Article.store')}}" method="POST" class="max-w-sm mx-auto bg-slate-500 p-5  rounded-md">
     @csrf
     @method('POST')
     <div class="mb-5">

@@ -21,7 +21,7 @@
 
 <body>
     <h1 class="text-2xl text-center my-3">Create Category</h1>
-    <form action="{{ route('categoryStore') }}" method="post" class="max-w-sm mx-auto bg-slate-500 p-5 rounded rounded-md">
+    <form action="{{ route('categoryStore') }}" method="post" class="max-w-sm mx-auto bg-slate-500 p-5  rounded-md">
         @csrf
         <div class="mb-5">
 
