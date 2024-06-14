@@ -22,7 +22,7 @@
 <body>
     <h1>Update Category</h1>
 
-    <form class="max-w-sm mx-auto bg-slate-500 p-5 rounded rounded-md" action="{{ route('categoryUpdate', $data->id) }}"
+    <form class="max-w-sm mx-auto bg-slate-500 p-5  rounded-md" action="{{ route('categoryUpdate', $data->id) }}"
         method="post">
         @csrf
         <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="">Name</label>

@@ -22,8 +22,8 @@ class ArticleController extends Controller
 
         Article::create($request->all());
 
-        return redirect()->route('Article.index')
-            ->with('success', 'Article created successfully.');
+        return redirect()->route('Article.index');
+
     }
 
 
@@ -34,8 +34,8 @@ class ArticleController extends Controller
         $article = Article::find($id);
         $article->update($request->all());
 
-        return redirect()->route('Article.index')
-            ->with('success', 'Article updated successfully.');
+        return redirect()->route('Article.index');
+
     }
 
 
@@ -45,8 +45,8 @@ class ArticleController extends Controller
         $article = Article::find($id);
         $article->delete();
 
-        return redirect()->route('Article.index')
-            ->with('success', 'Article deleted successfully');
+        return redirect()->route('Article.index');
+        
     }
 
 

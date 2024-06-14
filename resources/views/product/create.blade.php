@@ -21,7 +21,7 @@
 
 <body>
     <h2 class="text-2xl text-center my-3">Create Product</h2>
-    <form class="max-w-sm mx-auto bg-slate-500 p-5 rounded rounded-md" action="{{ route('productStore') }}" method="post">
+    <form class="max-w-sm mx-auto bg-slate-500 p-5  rounded-md" action="{{ route('productStore') }}" method="post">
         @csrf
 
 

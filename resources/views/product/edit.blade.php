@@ -22,7 +22,7 @@
 <body>
     <h1 class="block mb-2 text-2xl font-medium text-gray-500  text-center">Update Product</h1>
     <div class="bordered">
-        <form class="max-w-sm mx-auto bg-slate-500 p-5 rounded rounded-md" action="{{ route('productUpdate', $product->id) }}"
+        <form class="max-w-sm mx-auto bg-slate-500 p-5  rounded-md" action="{{ route('productUpdate', $product->id) }}"
             method="post"> @csrf
             <div class="mb-5">
                 <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="">Name</label>
