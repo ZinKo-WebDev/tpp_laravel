@@ -11,7 +11,7 @@ class CategoryController extends Controller
     {
 
         $categories = Category::all();
-        return view('category.index',compact("categories"));
+        return view('category.index', compact("categories"));
     }
     public function result()
     {
@@ -24,35 +24,33 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         Category::create([
-           "name"=> $request->name,
+            "name" => $request->name,
         ]);
-     return redirect()->route('categoryIndex');
+        return redirect()->route('categoryIndex');
     }
 
-public function edit($id)
-{
+    public function edit($id)
+    {
 
-    $data = Category:: where('id', $id)->first();
-    return view('category.edit', compact('data'));
+        $data = Category::where('id', $id)->first();
+        return view('category.edit', compact('data'));
+    }
+
+
+    public function update(Request $request, $id)
+    {
+        $data = Category::where('id', $id)->first();
+        $data->update([
+            'name' => $request->input('name'),
+        ]);
+
+        return redirect()->route('categoryIndex');
+    }
+
+    public function delete(Category $id)
+    {
+
+        $id->delete();
+        return redirect()->route('categoryIndex');
+    }
 }
-
-
-public function update(Request $request, $id)
-{
-    $data = Category::where('id', $id)->first();
-    $data->update([
-        'name' => $request->input('name'),
-    ]);
-
-    return redirect()->route('categoryIndex');
-}
-
-public function delete($id)
-{
-    $data = Category::where('id', $id)->first();
-    $data->delete();
-    return redirect()->route('categoryIndex');
-}
-
-}
-
