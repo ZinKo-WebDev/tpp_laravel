@@ -11,10 +11,13 @@ class Product extends Model
     protected $fillable = [
         'id',
         'name',
-        'color',
-        'category',
-        'price',
+        'type',
         'image',
-
+        'price',
+        'quantity',
     ];
+    public function images(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(ProductImage::class);
+    }
 }

@@ -1,66 +1,42 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        clifford: '#da373d',
-                    }
-                }
-            }
-        }
-    </script>
-    <title>Document</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Create Product</title>
+
 </head>
-
 <body>
-    <h2 class="text-2xl text-center my-3">Create Product</h2>
-    <form class="max-w-sm mx-auto bg-slate-500 p-5  rounded-md" action="{{ route('productStore') }}" method="post">
+<h1>Create Product</h1>
+<div class="container">
+    <form method="post" action="{{route('productStore')}}" enctype="multipart/form-data">
         @csrf
+        <div class="form-group">
+            <label for="productName">Name</label>
+            <input type="text" name="name" class="form-control" id="productName" placeholder="Product Name">
+        </div>
+        <div class="form-group">
+            <label for="productType">Type</label>
+            <input type="text" name="type" class="form-control" id="productType" placeholder="Type">
+        </div>
+        <div class="form-group">
+            <label for="productImages">Images</label>
 
-
-        <div class="mb-5">
-            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="">Name</label>
-            <input
-                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
-                type="text" name="name">
+            <input type="file" name="images[]" class="form-control-file" id="productImages" multiple>
         </div>
-        <div class="mb-5">
-            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="">Color</label>
-            <input
-                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
-                type="text" name="color">
+        <div class="form-group">
+            <label for="productPrice">Price</label>
+            <input type="number" name="price" class="form-control" id="productPrice" placeholder="Price">
         </div>
-        <div class="mb-5">
-            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="">Category</label>
-            <input
-                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
-                type="text" name="category">
+        <div class="form-group">
+            <label for="productQuantity">Quantity</label>
+            <input type="number" name="quantity" class="form-control" id="productQuantity" placeholder="Quantity">
         </div>
-        <div class="mb-5">
-            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="">Price</label>
-            <input
-                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
-                type="text" name="price">
-        </div>
-        <div class="mb-5">
-            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="">Image</label>
-            <input
-                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
-                type="file" name="image">
-        </div>
-        <div class="mb-5">
-            <button
-               class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-                type="submit">Create</button>
-        </div>
+        <button type="submit" class="btn btn-primary">Create</button>
     </form>
-</body>
+</div>
 
+</body>
 </html>
