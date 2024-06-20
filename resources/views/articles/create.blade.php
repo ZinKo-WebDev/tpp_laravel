@@ -17,7 +17,46 @@
     </script> <title>Document</title>
 </head>
 <body>
-    <h1 class="text-2xl text-center my-3">Create Article</h1>
+    <div class="flex justify-between">
+        <h1 class="text-center mt-4 mb-4">Create Article</h1>
+
+    <ul class="flex justify-center">
+        <!-- Authentication Links -->
+        @guest
+            @if (Route::has('login'))
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                </li>
+            @endif
+
+            {{-- @if (Route::has('register'))
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                </li>
+            @endif --}}
+        @else
+            <li class="flex justify-center items-center">
+                <a id="navbarDropdown" class="p-2" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                    {{ Auth::user()->name }}
+                </a>
+                    <br>
+                    <br>
+                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                    <a class="p-2" href="{{ route('logout') }}"
+                       onclick="event.preventDefault();
+                                     document.getElementById('logout-form').submit();">
+                        {{ __('Logout') }}
+                    </a>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
+                </div>
+            </li>
+        @endguest
+    </ul>
+</div>
+
 <form action="{{route('Article.store')}}" method="POST" class="max-w-sm mx-auto bg-slate-500 p-5  rounded-md">
     @csrf
     @method('POST')
