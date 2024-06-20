@@ -25,7 +25,7 @@
     <div class="flex justify-between">
         <h1 class="text-center mt-4 mb-4">Category Index</h1>
 
-    <ul class="flex justify-center">
+    <ul class="flex justify-center items-center">
         <!-- Authentication Links -->
         @guest
             @if (Route::has('login'))
@@ -40,6 +40,9 @@
                 </li>
             @endif --}}
         @else
+        <li class="p-2"><a href="{{route('productIndex')}}">Product</a></li>
+        <li class="p-2"><a href="{{route('categoryIndex')}}">Category</a></li>
+        <li class="p-2"><a href="{{route('Article.index')}}">Article</a></li>
             <li class="flex justify-center items-center">
                 <a id="navbarDropdown" class="p-2" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                     {{ Auth::user()->name }}
