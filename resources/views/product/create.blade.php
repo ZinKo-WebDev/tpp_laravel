@@ -15,24 +15,24 @@
         @csrf
         <div class="form-group">
             <label for="productName">Name</label>
-            <input type="text" name="name" class="form-control" id="productName" placeholder="Product Name">
+            <input value="{{old('name')}}" type="text" name="name" class="form-control" id="productName" placeholder="Product Name">
         </div>
         <div class="form-group">
             <label for="productType">Type</label>
-            <input type="text" name="type" class="form-control" id="productType" placeholder="Type">
+            <input value="{{old('type')}}" type="text" name="type" class="form-control" id="productType" placeholder="Type">
         </div>
         <div class="form-group">
             <label for="productImages">Images</label>
 
-            <input type="file" name="images[]" class="form-control-file" id="productImages" multiple>
+            <input value="{{old('images[]')}}" type="file" name="images[]" class="form-control-file" id="productImages" multiple>
         </div>
         <div class="form-group">
             <label for="productPrice">Price</label>
-            <input type="number" name="price" class="form-control" id="productPrice" placeholder="Price">
+            <input value="{{old('price')}}" type="number" name="price" class="form-control" id="productPrice" placeholder="Price">
         </div>
         <div class="form-group">
             <label for="productQuantity">Quantity</label>
-            <input type="number" name="quantity" class="form-control" id="productQuantity" placeholder="Quantity">
+            <input value="{{old('quantity')}}" type="number" name="quantity" class="form-control" id="productQuantity" placeholder="Quantity">
         </div>
         <button type="submit" class="btn btn-primary">Create</button>
     </form>
