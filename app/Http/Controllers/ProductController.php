@@ -5,16 +5,18 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\ProductImage;
 use Illuminate\Http\Request;
+
 class ProductController extends Controller
 {
     public function index()
     {
-        $product_item = Product::with('images')->get();
+            $product_item = Product::with('images')->get();
         return view('product.index', compact('product_item'));
     }
 
     public function create()
     {
+
         return view('product.create');
     }
 

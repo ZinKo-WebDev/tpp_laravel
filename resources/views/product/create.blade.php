@@ -5,36 +5,88 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        clifford: '#da373d',
+                    }
+                }
+            }
+        }
+    </script>
     <title>Create Product</title>
 
 </head>
 <body>
-<h1>Create Product</h1>
-<div class="container">
-    <form method="post" action="{{route('productStore')}}" enctype="multipart/form-data">
-        @csrf
-        <div class="form-group">
-            <label for="productName">Name</label>
-            <input type="text" name="name" class="form-control" id="productName" placeholder="Product Name">
-        </div>
-        <div class="form-group">
-            <label for="productType">Type</label>
-            <input type="text" name="type" class="form-control" id="productType" placeholder="Type">
-        </div>
-        <div class="form-group">
-            <label for="productImages">Images</label>
+    <div class="flex justify-between">
+        <h1 class="text-center mt-4 mb-4">Products Create</h1>
 
-            <input type="file" name="images[]" class="form-control-file" id="productImages" multiple>
+    <ul class="flex justify-center">
+        <!-- Authentication Links -->
+        @guest
+            @if (Route::has('login'))
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                </li>
+            @endif
+
+            {{-- @if (Route::has('register'))
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                </li>
+            @endif --}}
+        @else
+            <li class="flex justify-center items-center">
+                <a id="navbarDropdown" class="p-2" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                    {{ Auth::user()->name }}
+                </a>
+                    <br>
+                    <br>
+                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                    <a class="p-2" href="{{ route('logout') }}"
+                       onclick="event.preventDefault();
+                                     document.getElementById('logout-form').submit();">
+                        {{ __('Logout') }}
+                    </a>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
+                </div>
+            </li>
+        @endguest
+    </ul>
+</div>
+
+
+<div class="container">
+    <form method="post" action="{{route('productStore')}}" enctype="multipart/form-data" class="max-w-sm mx-auto bg-slate-500 p-5  rounded-md">
+        @csrf
+        <div class="mb-5">
+            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="productName">Name</label>
+            <input value="{{old('name')}}" type="text" name="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"id="productName" placeholder="Product Name">
         </div>
-        <div class="form-group">
-            <label for="productPrice">Price</label>
-            <input type="number" name="price" class="form-control" id="productPrice" placeholder="Price">
+        <div class="mb-5">
+            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="productType">Type</label>
+            <input value="{{old('type')}}" type="text" name="type" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" id="productType" placeholder="Type">
         </div>
-        <div class="form-group">
-            <label for="productQuantity">Quantity</label>
-            <input type="number" name="quantity" class="form-control" id="productQuantity" placeholder="Quantity">
+        <div class="mb-5">
+            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="productImages">Images</label>
+
+            <input value="{{old('images[]')}}" type="file" name="images[]" class="form-control-file" id="productImages" multiple>
         </div>
-        <button type="submit" class="btn btn-primary">Create</button>
+        <div class="mb-5">
+            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="productPrice">Price</label>
+            <input value="{{old('price')}}" type="number" name="price" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" id="productPrice" placeholder="Price">
+        </div>
+        <div class="mb-5">
+            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="productQuantity">Quantity</label>
+            <input value="{{old('quantity')}}" type="number" name="quantity" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" id="productQuantity" placeholder="Quantity">
+        </div>
+        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Create</button>
     </form>
 </div>
 
